@@ -1,30 +1,39 @@
-import streamlit as st
+import requests
 import pandas as pd
+import streamlit as st
 
-# Title
-st.title("Generate Image URLs for Items in a CSV File")
+# Unsplash API credentials
+UNSPLASH_ACCESS_KEY = "ChAMp9kD1hwKEiGQiU6blJ41y6kZuIzIyxs1TaU81Kk"  # Replace with your actual API key
+
+# Function to search for an image
+def get_image_url(query):
+    url = f"https://api.unsplash.com/search/photos"
+    params = {"query": query, "client_id": UNSPLASH_ACCESS_KEY, "per_page": 1}
+    response = requests.get(url, params=params)
+    if response.status_code == 200:
+        data = response.json()
+        if data["results"]:
+            return data["results"][0]["urls"]["regular"]
+        else:
+            return "No image found"
+    else:
+        return "API error"
+
+# Streamlit app
+st.title("Fetch Real Image URLs for Items")
 
 # File uploader
-uploaded_file = st.file_uploader("Upload a CSV file with items", type="csv")
-
+uploaded_file = st.file_uploader("Upload a CSV file with an 'Item' column", type="csv")
 if uploaded_file is not None:
     # Read the CSV file
     df = pd.read_csv(uploaded_file)
-    st.write("Uploaded CSV File:", df)
-    
-    # Check for a specific column (e.g., "Item")
     if "Item" in df.columns:
-        items = df["Item"]
-        
-        # Mock image URLs (replace with API logic for real images)
-        base_url = "https://via.placeholder.com/150?text="
-        df["Image URL"] = items.apply(lambda x: f"{base_url}{x.replace(' ', '+')}")
-        
-        # Display the updated DataFrame
-        st.write("Updated CSV File with Image URLs:", df)
-        
-        # Optionally download the updated CSV
-        csv = df.to_csv(index=False).encode('utf-8')
+        # Add image URLs
+        df["Image URL"] = df["Item"].apply(get_image_url)
+        st.write("Updated CSV with Image URLs:", df)
+
+        # Allow download of the updated file
+        csv = df.to_csv(index=False).encode("utf-8")
         st.download_button(
             label="Download Updated CSV",
             data=csv,
@@ -32,4 +41,4 @@ if uploaded_file is not None:
             mime="text/csv",
         )
     else:
-        st.error("The uploaded CSV must contain a column named 'Item'.")
+        st.error("The uploaded file must contain an 'Item' column.")
