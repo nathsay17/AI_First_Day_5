@@ -1,5 +1,3 @@
-pip install openai
-
 import os
 import openai
 import numpy as np
