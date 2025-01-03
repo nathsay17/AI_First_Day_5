@@ -22,22 +22,10 @@ from background import apply_background,tint
 
 warnings.filterwarnings("ignore")
 
-st.set_page_config(page_title="Eve", page_icon="🤖", layout="wide")
-
-#Background
-def get_base64_image(image_path):
-    with open(image_path, "rb") as file:
-        encoded_image = base64.b64encode(file.read()).decode()
-    return encoded_image
-
-bg1 = get_base64_image("images/walle.jpg")
-bg2 = get_base64_image("images/walle_and_eve.jpg")
-bg3 = get_base64_image("images/eve.jpg")
-
-
+st.set_page_config(page_title="Lazana", page_icon="🤖", layout="wide")
 
 with st.sidebar :
-    st.image('images/mo.png')
+    st.image('images/Lazana1.png')
     
     openai.api_key = st.text_input('Enter OpenAI API token:', type='password')
     if not (openai.api_key.startswith('sk-') and len(openai.api_key)==164):
@@ -52,8 +40,8 @@ with st.sidebar :
 
     options = option_menu(
         "Content", 
-        ["Home", "Data Set", "Talk to Eve"],
-        icons = ['heart', 'clipboard', 'chat'],
+        ["Home", "Data Set"],
+        icons = ['heart', 'clipboard'],
         menu_icon = "book", 
         default_index = 0,
         styles = {
@@ -62,7 +50,6 @@ with st.sidebar :
             "nav-link-selected" : {"background-color" : "#1b8cc4"}          
         }
     )
-    st.image('images/axiom.png')
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
@@ -72,59 +59,84 @@ if "chat_session" not in st.session_state:
 
 
 if options == "Home":
-    st.markdown(apply_background(bg1), unsafe_allow_html=True)
     st.markdown(home_string, unsafe_allow_html=True)
 
 elif options == "Data Set":
-    st.markdown(apply_background(bg2), unsafe_allow_html=True)
-    st.markdown('<h1 class="outlined-text"></h1>', unsafe_allow_html=True)
-    st.markdown(tint, unsafe_allow_html=True)
-    
-    dataframed = pd.read_csv('WallEve_dataset.csv')
-    html_table = dataframed.to_html(classes='custom-table', escape=False)
-    st.markdown(html_table, unsafe_allow_html=True)
 
-elif options == "Talk to Eve":
-    st.markdown(apply_background(bg3), unsafe_allow_html=True)
-    st.markdown('<h1 class="outlined-text">Talk to Eve</h1>', unsafe_allow_html=True)
-    dataframed = pd.read_csv('WallEve_dataset.csv')
-    dataframed['combined'] = dataframed.apply(lambda row : ' '.join(row.values.astype(str)), axis = 1)
-    documents = dataframed['combined'].tolist()
-    embeddings = [get_embedding(doc, engine = "text-embedding-3-small") for doc in documents]
-    embedding_dim = len(embeddings[0])
-    embeddings_np = np.array(embeddings).astype('float32')
-    index = faiss.IndexFlatL2(embedding_dim)
-    index.add(embeddings_np)    
     
-    def initialize_conversation(prompt):
-     if 'messagess' not in st.session_state:
-         st.session_state.messagess = []
-         st.session_state.messagess.append({"role": "system", "content": System_Prompt})
-         chat =  openai.ChatCompletion.create(model = "gpt-4o-mini", messages = st.session_state.messagess, temperature=0.5, max_tokens=1500, top_p=1, frequency_penalty=0, presence_penalty=0)
-         response = chat.choices[0].message.content
-         st.session_state.messagess.append({"role": "assistant", "content": response})
+    # Function to load customer data from a CSV file
+    def load_customer_data(file_path):
+        # Load the CSV file into a pandas DataFrame
+        df = pd.read_csv(file_path)
+        return df
     
-    initialize_conversation(System_Prompt)
+    # Simulated agents for customer, purchases, and categorization
+    def customer_analyst(customer_name):
+        # Placeholder function for analyzing customer data
+        return f"Analyzing data for {customer_name}"
     
-    for messages in st.session_state.messagess :
-      if messages['role'] == 'system' : continue 
-      else :
-        with st.chat_message(messages["role"]):
-             st.markdown(messages["content"])
+    def purchase_analyzer(customer_name, purchases):
+        # Placeholder for analyzing purchases
+        return [f"Analyzing purchases for {customer_name}: {', '.join(purchases)}"]
     
-    if user_message := st.chat_input("Say something"):
-     with st.chat_message("user"):
-          st.markdown(user_message)
-     query_embedding = get_embedding(user_message, engine='text-embedding-3-small')
-     query_embedding_np = np.array([query_embedding]).astype('float32')
-     _, indices = index.search(query_embedding_np, 2)
-     retrieved_docs = [documents[i] for i in indices[0]]
-     context = ' '.join(retrieved_docs)
-     structured_prompt = f"Context:\n{context}\n\nQuery:\n{user_message}\n\nResponse:"
-     chat =  openai.ChatCompletion.create(model = "gpt-4o-mini", messages = st.session_state.messagess + [{"role": "user", "content": structured_prompt}], temperature=0.5, max_tokens=1500, top_p=1, frequency_penalty=0, presence_penalty=0)
-     st.session_state.messagess.append({"role": "user", "content": user_message})
-     response = chat.choices[0].message.content
-     with st.chat_message("assistant"):
-          st.markdown(response)
-     st.session_state.messagess.append({"role": "assistant", "content": response})
+    def category_classifier(purchases):
+        # Simulated categorization based on products
+        categories = {
+            "cat_bed": ["cat_bed", "cat_food"],
+            "cat_collar": ["cat_collar"],
+            "dog_food": ["dog_food"],
+            "shoes_sneakers": ["shoes_sneakers", "shoes_boots"],
+            "watch_regular": ["watch_regular"]
+        }
+        classified = []
+        for category, items in categories.items():
+            if any(item in purchases for item in items):
+                classified.append(category)
+        return classified
     
+    def orchestrator(customer_name, classified_categories):
+        # Orchestrator selects personalized ads based on categorized purchases
+        ads = []
+        for category in classified_categories:
+            img_path = f"images/{category}.jpg"  # Example image path
+            if os.path.exists(img_path):
+                ads.append(img_path)
+        return ads
+    
+    # Streamlit Code to Display Customer Data
+    st.title("Personalized Ads - Lazana")
+    
+    # Path to the downloaded CSV file (update this path based on where your CSV is saved)
+    file_path = "purchase_history.csv"
+    
+    # Load the data
+    customer_data_df = load_customer_data(file_path)
+    
+    # Convert customer data into a more useful format for analysis
+    customer_data = {}
+    for _, row in customer_data_df.iterrows():
+        customer_name = row['customer_name']
+        purchases = [row['product_category1'], row['product_category2'], row['product_category3'], row['product_name']]
+        customer_data[customer_name] = purchases
+    
+    # Customer Selection
+    selected_customer = st.selectbox("Select a Customer", customer_data.keys())
+    
+    if selected_customer:
+        # Step 1: Analyze customer data
+        customer_analysis = customer_analyst(selected_customer)
+        st.write(customer_analysis)
+    
+        # Step 2: Analyze purchases
+        purchases = customer_data.get(selected_customer, [])
+        purchase_analysis = purchase_analyzer(selected_customer, purchases)
+        st.write(purchase_analysis)
+    
+        # Step 3: Classify purchases into categories
+        categories = category_classifier(purchases)
+        st.write(f"Classified Categories: {', '.join(categories)}")
+    
+        # Step 4: Orchestrator selects ads based on classification
+        ads = orchestrator(selected_customer, categories)
+        for ad in ads:
+            st.image(ad, caption=f"Personalized Ad for {selected_customer}", use_column_width=True)
