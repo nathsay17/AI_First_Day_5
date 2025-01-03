@@ -18,8 +18,6 @@ import warnings
 from streamlit_option_menu import option_menu
 from streamlit_extras.mention import mention
 from strings import home_string, System_Prompt
-from swarm import Swarm, Agent
-from openai import OpenAI
 
 warnings.filterwarnings("ignore")
 st.set_page_config(page_title="Lazana", page_icon="🤖", layout="wide")
