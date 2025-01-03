@@ -23,7 +23,7 @@ warnings.filterwarnings("ignore")
 
 # Function to load the CSV file
 def load_csv():
-    file_path = "customer_recommendation.csv"  # Path to CSV file in your GitHub repo
+    file_path = "customer_recommendations.csv"  # Path to CSV file in your GitHub repo
     df = pd.read_csv(file_path)
     return df
 
