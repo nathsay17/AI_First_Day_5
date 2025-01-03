@@ -23,7 +23,7 @@ warnings.filterwarnings("ignore")
 
 # Function to load the CSV file
 def load_csv():
-    file_path = "/purchase_history.csv"  # Path to CSV file in your GitHub repo
+    file_path = "customer_recommendation.csv"  # Path to CSV file in your GitHub repo
     df = pd.read_csv(file_path)
     return df
 
@@ -87,11 +87,13 @@ if options == "Home":
     st.markdown(home_string, unsafe_allow_html=True)
 
 elif options == "Data Set":
-    # Load the CSV file
+    # Load customer recommendations from CSV
     df = load_csv()
 
-    # Customer buttons
-    customer_names = ['Xyrel', 'Carlo', 'Amber', 'Danielle']
-    for customer_name in customer_names:
-        if st.button(customer_name):
-            display_images_for_customer(customer_name, df)
+    # Check if the DataFrame is loaded successfully
+    if df is not None:
+        # Customer buttons
+        customer_names = ['Xyrel', 'Carlo', 'Amber', 'Danielle']
+        for customer_name in customer_names:
+            if st.button(customer_name):
+                display_images_for_customer(customer_name, df)
