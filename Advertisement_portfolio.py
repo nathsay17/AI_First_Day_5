@@ -66,7 +66,14 @@ elif options == "Data Set":
     # Function to load customer data from a CSV file
     def load_customer_data(file_path):
         # Load the CSV file into a pandas DataFrame
-        df = pd.read_csv(file_path)
+        try:
+            df = pd.read_csv(file_path)
+        except Exception as e:
+            st.error(f"Error loading file: {e}")
+            return pd.DataFrame()  # Return an empty DataFrame in case of error
+        
+        if df.empty:
+            st.warning("The file is empty or couldn't be loaded.")
         return df
     
     # Simulated agents for customer, purchases, and categorization
