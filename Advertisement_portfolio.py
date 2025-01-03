@@ -21,6 +21,7 @@ from strings import home_string, System_Prompt
 
 warnings.filterwarnings("ignore")
 
+# Function to load the CSV file
 def load_csv():
     file_path = "path_to_your_github_repo/your_csv_file.csv"  # Path to CSV file in your GitHub repo
     df = pd.read_csv(file_path)
@@ -86,6 +87,9 @@ if options == "Home":
     st.markdown(home_string, unsafe_allow_html=True)
 
 elif options == "Data Set":
+    # Load the CSV file
+    df = load_csv()
+
     # Customer buttons
     customer_names = ['Xyrel', 'Carlo', 'Amber', 'Danielle']
     for customer_name in customer_names:
