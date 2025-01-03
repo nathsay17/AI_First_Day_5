@@ -18,7 +18,6 @@ import warnings
 from streamlit_option_menu import option_menu
 from streamlit_extras.mention import mention
 from strings import home_string, System_Prompt
-from background import apply_background,tint
 
 warnings.filterwarnings("ignore")
 
