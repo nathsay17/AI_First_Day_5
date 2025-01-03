@@ -2,7 +2,6 @@ openai==1.33.0
 streamlit
 streamlit_option_menu
 streamlit_extras
-git+https://github.com/openai/swarm.git
 faiss-cpu
 plotly
 openpyxl
