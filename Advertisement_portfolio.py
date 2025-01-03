@@ -26,6 +26,7 @@ st.set_page_config(page_title="Lazana", page_icon="🤖", layout="wide")
 def load_csv():
     file_path = "path_to_your_github_repo/your_csv_file.csv"  # Path to CSV file in your GitHub repo
     df = pd.read_csv(file_path)
+    st.write(df)  # Debugging line to output the DataFrame
     return df
 
 # Display images for the selected customer
