@@ -1,102 +1,58 @@
 home_string = """
 <h2 class="outlined-text" style="color: #3b718f; font-size: 40px;">
-    Welcome to WallEve – The Future of Space Logistics!
+    Welcome to Your Personalized Advertisement Platform!
 </h2>
 
 <p class="outlined-text" style="font-size: 32px;">
-    At WallEve, we're proud to be at the forefront of interplanetary logistics, paving the way for the next frontier of space travel and commerce. In a world where humans thrive on Mars and daily life depends on seamless delivery systems, WallEve is your trusted partner for efficient and secure parcel transportation between Earth and Mars.
+    Our project is an intelligent framework designed to deliver personalized advertisements tailored to individual customer preferences. By leveraging data-driven insights from customer purchase histories, our system ensures that every advertisement resonates with the user's unique interests.
 </p>
 
 <h3 class="outlined-text" style="color: #3b718f; font-size: 36px;">
-    Our Mission
+    The Vision
 </h3>
 <p class="outlined-text" style="font-size: 32px;">
-    Our mission is simple: to provide the most reliable and cutting-edge logistics solutions for the space age. With Mars now a thriving hub for human life, we’re here to ensure that parcels—whether a birthday gift, scientific equipment, or everyday essentials—are delivered swiftly, safely, and with a commitment to customer satisfaction.
+    Our goal is to revolutionize the way advertisements are presented by combining intelligent agents, categorized customer data, and dynamic ad displays. We envision a future where marketing feels personal, seamless, and impactful.
 </p>
 
 <h3 class="outlined-text" style="color: #3b718f; font-size: 36px;">
-    Our Vision
+    How Does It Work?
 </h3>
 <p class="outlined-text" style="font-size: 32px;">
-    At WallEve, we envision a future where space logistics are as routine as shipping across cities on Earth. From the bustling cities of Gryffindor, Hufflepuff, Ravenclaw, and Slytherin on Mars to Earth’s great capitals, our service ensures that parcels reach their destinations, no matter the distance or complexity. We aim to bridge the gap between Earth and Mars with technology that moves faster, smarter, and with fewer barriers.
+    The system uses a series of specialized agents working collaboratively to analyze customer data, classify purchases into categories, and select tailored advertisements. The process is driven by the following key components:
 </p>
+
+<ul class="outlined-text" style="font-size: 28px;">
+    <li><strong>Customer Analysis:</strong> Analyzes customer purchase behavior and preferences.</li>
+    <li><strong>Purchase Categorization:</strong> Classifies purchased items into specific categories like cat_bed, dog_food, shoes_heels, etc.</li>
+    <li><strong>Orchestrator Agent:</strong> Oversees the entire framework, selecting and displaying the most relevant advertisements.</li>
+</ul>
 
 <h3 class="outlined-text" style="color: #3b718f; font-size: 36px;">
-    How Can Eve, Your AI Assistant, Help You?
-</h3>
-<p class="outlined-text" style="font-size: 32px;">
-    Our AI assistant, Eve, is here to make your logistics experience as easy and hassle-free as possible. Whether you’re a new customer looking to learn about WallEve’s services or an existing customer tracking a specific parcel, Eve is ready to assist. Here’s what Eve can do for you:
-</p>
-
-<h4 class="outlined-text" style="color: #3b718f; font-size: 34px;">
-    Parcel Tracking & Delivery Status
-</h4>
-<p class="outlined-text" style="font-size: 32px;">
-    Have a parcel in transit? Eve can provide real-time updates on your parcel’s location and delivery status. Whether your parcel is "in transit", "out for delivery", "delayed", or "delivered", Eve gives you a detailed breakdown of where it is and when you can expect it.
-</p>
-<p class="outlined-text" style="font-size: 32px;">
-    <strong>Example:</strong> "Where is my parcel?"  
-    "Your parcel is currently in transit and is expected to arrive in Gryffindor City in 10 days."
-</p>
-
-<h4 class="outlined-text" style="color: #3b718f; font-size: 34px;">
-    Delivery Delays & Resolution
-</h4>
-<p class="outlined-text" style="font-size: 32px;">
-    If your parcel is delayed, don’t worry—Eve will help you understand the reason behind the delay and provide timely updates. If you ask, "Why is my parcel taking so long?", Eve will give you an empathetic response and let you know what’s being done to resolve the issue.
-</p>
-<p class="outlined-text" style="font-size: 32px;">
-    <strong>Example:</strong> "Why is my parcel delayed?"  
-    "Your parcel is currently delayed due to a warehouse issue. We are working hard to get it back on track and will update you as soon as we can."
-</p>
-
-<h4 class="outlined-text" style="color: #3b718f; font-size: 34px;">
-    Cost Calculation for Future Deliveries
-</h4>
-<p class="outlined-text" style="font-size: 32px;">
-    Wondering how much it costs to send a package to Mars? Eve will help you estimate delivery costs based on parcel size and weight. The larger and heavier the parcel, the more it will cost to ship. Eve will ask for the dimensions and weight of your parcel to give you an accurate quote.
-</p>
-<p class="outlined-text" style="font-size: 32px;">
-    <strong>Example:</strong> "How much will it cost to send a scooter to Mars?"  
-    "To give you an accurate quote, could you provide the size and weight of your scooter? The larger and heavier the parcel, the higher the cost."
-</p>
-
-<h4 class="outlined-text" style="color: #3b718f; font-size: 34px;">
-    General Inquiries About WallEve
-</h4>
-<p class="outlined-text" style="font-size: 32px;">
-    Whether you're curious about our company’s mission, our vision for the future, or how long it takes to ship from Earth to Mars, Eve is here to answer your questions with a smile. If you need more details about our services, Eve will be happy to provide all the information you need.
-</p>
-<p class="outlined-text" style="font-size: 32px;">
-    <strong>Example:</strong> "What is WallEve’s mission?"  
-    "At WallEve, our mission is to provide efficient, reliable, and safe interplanetary logistics to the residents of Mars and Earth. We aim to make space logistics as accessible as regular shipping, ensuring everyone has a reliable partner for their deliveries."
-</p>
-
-<h4 class="outlined-text" style="color: #3b718f; font-size: 34px;">
-    Privacy and Security
-</h4>
-<p class="outlined-text" style="font-size: 32px;">
-    Your privacy is important to us. To ensure the safety of your parcel details, Eve will always ask for your name and Parcel ID when tracking specific deliveries. Rest assured, we only disclose information related to your own parcels and never share data from other users.
-</p>
-<p class="outlined-text" style="font-size: 32px;">
-    <strong>Example:</strong> "Can I get more details about my parcel?"  
-    "To ensure privacy, I’ll need your name and Parcel ID. Please provide that, and I’ll be happy to give you all the details."
-</p>
-
-<h3 class="outlined-text" style="color: #3b718f; font-size: 36px;">
-    Why Choose WallEve?
+    Key Features
 </h3>
 
 <ul class="outlined-text" style="font-size: 28px;">
-    <li><strong>Fast, Reliable Deliveries:</strong> We understand that time is precious. That’s why we’ve invested in the latest space logistics technology to make sure your parcels arrive as quickly as possible. While the fastest deliveries may take up to a month, we’re committed to providing timely and safe transportation from Earth to Mars and beyond.</li>
-    <li><strong>Customer-Centered Service:</strong> Our team is always focused on ensuring the best experience for you, from the moment you place your order to the moment it arrives at its destination. And with Eve, you have 24/7 access to an AI assistant that is knowledgeable, friendly, and eager to help.</li>
-    <li><strong>Cutting-Edge Space Logistics:</strong> With over 1000 years of space travel experience, WallEve leads the way in interplanetary logistics. We deliver to the four major cities on Mars—Gryffindor City, Hufflepuff City, Ravenclaw City, and Slytherin City—and beyond. Whether it’s an urgent delivery or a special gift for someone on Mars, we’ve got you covered.</li>
+    <li><strong>Personalized Ads:</strong> Displays custom-tailored advertisements based on customer purchase history and preferences.</li>
+    <li><strong>Seamless Navigation:</strong> Users can click on customer names (e.g., Xyrel, Carlo, Amber, Danielle) to view their personalized ad portfolio.</li>
+    <li><strong>Dynamic Framework:</strong> Uses modular agents for efficient processing and real-time ad selection.</li>
+    <li><strong>Intelligent Categorization:</strong> Classifies purchases using an advanced categorization model.</li>
+</ul>
+
+<h3 class="outlined-text" style="color: #3b718f; font-size: 36px;">
+    Why Choose Our Platform?
+</h3>
+
+<ul class="outlined-text" style="font-size: 28px;">
+    <li><strong>Targeted Marketing:</strong> Ensures advertisements are relevant and impactful by focusing on customer needs.</li>
+    <li><strong>Scalable Design:</strong> Easily accommodates new customers, products, and categories.</li>
+    <li><strong>Interactive Experience:</strong> Provides a user-friendly interface for exploring personalized content.</li>
 </ul>
 
 <p class="outlined-text" style="font-size: 32px;">
-    We’re excited to help you send and receive parcels across the stars! If you have any questions or need assistance, don’t hesitate to ask Eve. She’s always here to help with your logistics needs.
+    Experience the future of advertising, where every recommendation feels like it was made just for you. Ready to dive in? Click on a customer's name to explore their personalized ads!
 </p>
 """
+
 
 
 
